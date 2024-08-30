@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        a, button {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            display: inline-block;
+        }
+        a:hover, button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Courier Management</h1>
+    <a href="/couriers/new">Add New Courier</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Car Type</th>
+            <th>Car Number</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop to display couriers -->
+        <tr th:each="courier : ${couriers}">
+            <td th:text="${courier.name}"></td>
+            <td th:text="${courier.carType}"></td>
+            <td th:text="${courier.carNumber}"></td>
+            <td th:text="${courier.phone}"></td>
+            <td>
+                <a th:href="@{/couriers/edit/{id}(id=${courier.id})}">Edit</a>
+                <a th:href="@{/couriers/delete/{id}(id=${courier.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

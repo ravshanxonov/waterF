@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Courier Form</h1>
+    <form th:action="@{/couriers}" th:object="${courier}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
+        <div class="form-group">
+            <label for="carType">Car Type</label>
+            <input type="text" id="carType" th:field="*{carType}" required>
+        </div>
+        <div class="form-group">
+            <label for="carNumber">Car Number</label>
+            <input type="text" id="carNumber" th:field="*{carNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" th:field="*{phone}" required>
+        </div>
+        <input type="hidden" th:value="${courier.id}" name="id">
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>
